@@ -2,10 +2,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: blackhole_development
+  database: eshop_development
   pool: 5
-  username: admin
-  password: admin
+  username: eshop
+  password: eshop
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,7 +14,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: blackhole_test
+  database: eshop_test
   pool: 5
-  username: admin
-  password: admin
+  username: eshop
+  password: eshop
