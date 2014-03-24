@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>BlackHole Sunglasses</h1>
-   <h3><%= "#{@page_title}" if @page_title %></h3>
+   <h1><%= "#{@page_title}" if @page_title %></h1>
     <%= yield %>
   </body>
 </html>
