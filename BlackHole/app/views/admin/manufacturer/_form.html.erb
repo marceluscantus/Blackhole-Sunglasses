@@ -1,0 +1,18 @@
+<% if @manufacturer.errors.any? %>
+  <ul>
+    <% @manufacturer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><label for="manufacturer_company_name">Nombre de la empresa</label><br/>
+<%= text_field 'manufacturer', 'name' %></p>
+<p><label for="manufacturer_city">Ciudad</label><br/>
+<%= text_field 'manufacturer', 'city' %></p>
+<p><label for="manufacturer_telephone">Teléfono</label><br/>
+<%= text_field 'manufacturer', 'telephone' %></p>
+<p><label for="manufacturer_mail">Email</label><br/>
+<%= text_field 'manufacturer', 'mail' %></p>
+<p><label for="manufacturer_address">Dirección</label><br/>
+<%= text_field 'manufacturer', 'address' %></p>

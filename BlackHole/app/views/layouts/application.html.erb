@@ -1,14 +1,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title><%= @page_title || 'BlackHole Sunglasses' %></title>
-    <%= stylesheet_link_tag "style" %>
-    <%= javascript_include_tag "javascript" => true %>
-  </head>
-  <body>
-    <h1>BlackHole Sunglasses</h1>
-   <h3><%= "#{@page_title}" if @page_title %></h3>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+  <title><%= @page_title || 'BlackHole Sunglasses' %></title>
+  <%= stylesheet_link_tag "style" %>
+  <% if @cart || (@page_title && (@page_title.include?('Listing') || @page_title.include?('Displaying'))) %>
+    <%= javascript_include_tag "application" %>
+  <% end %>
+</head>
+<body>
+  <div id="header">
+    <h1 id="logo">BlackHole&trade;</h1>
+    <h2 id="slogan">High quality Sunglasses</h2>
+    <p id="loginlogout">
+      <% if current_user && current_user.admin? %>
+        Logged in as <%= current_user.login %>
+        (<%= link_to "Edit account", :controller => '/user', :action => :show %>)
+        <br/>
+        (<%= link_to "Logout", :controller => '/user_session', :action => :destroy %>)
+      <% else %>
+        <% if User.count == 0 %>
+          (<%= link_to "Create new account", :controller => '/user', :action => :new %>)
+        <% else %>
+          (<%= link_to "Login", :controller => '/user_session', :action => :new %>)
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+
+  <div id="menu">
+    <ul>
+      <li><a href="/admin/manufacturer">Fabricantes</a>&nbsp;|&nbsp;</li>
+      <li><a href="/admin/publisher">Publishers</a>&nbsp;|&nbsp;</li>
+      <li><a href="/admin/glasses">Gafas</a>&nbsp;|&nbsp;</li>
+      <li><a href="/admin/order">Pedidos</a>&nbsp;|&nbsp;</li>
+      <li><a href="/">Catálogo</a>&nbsp;|&nbsp;</li>
+      <li><a href="/about">About</a>&nbsp;</li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <h1><%= @page_title if @page_title %></h1>
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
     <%= yield %>
-  </body>
+  </div>
+
+  <% if @cart %>
+    <div id="shopping_cart"><%= render :partial => 'cart/cart' %></div>
+  <% end %>
+
+  <div id="footer">
+    &copy; 2013-2014 BlackHole
+  </div>  
+</body>
 </html>
