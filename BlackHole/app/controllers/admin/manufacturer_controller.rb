@@ -19,6 +19,14 @@ class Admin::ManufacturerController < ApplicationController
   end
 
   def update
+    @manufacturer = Manufacturer.find(params[:id])
+	  if @manufacturer.update_attributes(params[:manufacturer])
+		  flash[:notice] = "Fabricante #{@manufacturer.company_name} ha sido modificado con exito."
+		  redirect_to :action => 'show', :id => @manufacturer
+	  else
+		  @page_title = 'Editar fabricante'
+		  render :action => 'edit'
+	  end
   end
 
   def destroy
