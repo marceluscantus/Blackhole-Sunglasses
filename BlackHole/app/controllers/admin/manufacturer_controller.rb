@@ -5,7 +5,7 @@ class Admin::ManufacturerController < ApplicationController
   end
 
   def create
-      @manufacturer = MAnufacturer.new(params[:manufacturer])
+      @manufacturer = Manufacturer.new(params[:manufacturer])
     if @manufacturer.save
       flash[:notice] = "Fabricante #{@manufacturer.company_name} ha sido creado con éxito."
       redirect_to :action => 'index'
@@ -25,8 +25,12 @@ class Admin::ManufacturerController < ApplicationController
   end
 
   def show
+    @manufacturer = Manufacturer.find(params[:id])
+    @page_title = @manufacturer.company_name
   end
 
   def index
+    @manufacturer = Manufacturer.find(:all)
+    @page_title = 'Listado de autores'
   end
 end
