@@ -1,5 +1,7 @@
 class Admin::ManufacturerController < ApplicationController
   def new
+      @manufacturer= Manufacturer.new
+      @page_title= 'Crear Fabricante'
   end
 
   def create
