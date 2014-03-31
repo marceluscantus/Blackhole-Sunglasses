@@ -30,6 +30,10 @@ class Admin::ManufacturerController < ApplicationController
   end
 
   def destroy
+    @manufacturer = Manufacturer.find(params[:id])
+    @manufacturer.destroy
+    flash[:notice] = "Fabricante #{@manufacturer.company_name} borrado correctamente."
+    redirect_to :action => 'index'
   end
 
   def show
@@ -39,6 +43,6 @@ class Admin::ManufacturerController < ApplicationController
 
   def index
     @manufacturer = Manufacturer.find(:all)
-    @page_title = 'Listado de autores'
+    @page_title = 'Listado de fabricantes'
   end
 end
