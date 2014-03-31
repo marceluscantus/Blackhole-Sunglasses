@@ -1,11 +1,11 @@
 BlackHole::Application.routes.draw do
-  get "manufacturer/new"
-  get "manufacturer/create"
-  get "manufacturer/edit"
-  get "manufacturer/update"
-  get "manufacturer/destroy"
-  get "manufacturer/show"
-  get "manufacturer/index"
+  get "admin/manufacturer/new"
+  get "admin/manufacturer/create"
+  get "admin/manufacturer/edit"
+  get "admin/manufacturer/update"
+  get "admin/manufacturer/destroy"
+  get "admin/manufacturer/show"
+  get "admin/manufacturer/index"
   get "about/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
